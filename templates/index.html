@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction App</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #7ec8e3; /* Baby Blue */
+            margin: 0;
+            padding: 0;
+            color: #050a30; /* Dark Blue */
+        }
+
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 15px rgba(0, 12, 102, 0.2); /* Navy shadow */
+            border-radius: 12px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #050a30; /* Dark Blue */
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #000c66; /* Navy Blue */
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0px;
+            border: 1px solid #000c66;
+            border-radius: 8px;
+            resize: vertical;
+            font-size: 16px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: #0000ff; /* Blue */
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .btn-submit:hover {
+            background-color: #000c66; /* Navy Blue */
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #000c66; /* Navy Blue */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hate Speech Detection</h1>
+        <form method="POST">
+            <label for="input-data">Enter Text</label>
+            <textarea id="input-data" name="data" rows="5" placeholder="Type your text here..." required>{{ user_input if user_input else '' }}</textarea>
+            <input class="btn-submit" type="submit" value="Predict">
+        </form>
+
+        {% if result %}
+        <div class="result">
+            Prediction Result: {{ result }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
